@@ -12,11 +12,11 @@ class Day05Test {
 
     @Test
     fun `test part1`() {
-        assertEquals(7, Day05(sample).part1())
+        assertEquals("CMZ", Day05(sample).part1())
     }
 
     @Test
     fun `test part2`() {
-        assertEquals(5, Day05(sample).part2())
+        assertEquals("MCD", Day05(sample).part2())
     }
 }
