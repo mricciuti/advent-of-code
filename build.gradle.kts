@@ -1,8 +1,20 @@
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import java.nio.file.Files
 
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.squareup.okhttp3:okhttp:4.10.0")
+    }
+}
 plugins {
     kotlin("jvm") version "1.7.21" apply false
 }
+
+
 
 subprojects {
     apply(plugin = "java")
@@ -43,6 +55,20 @@ subprojects {
                     Files.createDirectories(dayTestSrcDir)
                     dayTestSrcDir.resolve("Day${day}Test.kt").toFile().writeText(testDayTemplate.replace("DD", day).replace("YYYY", year))
                     dayTestSrcDir.resolve("day${day}_sample.in").toFile().createNewFile()
+                }
+
+                // get input data
+                val inputUrl = "https://adventofcode.com/$year/day/${day.toInt()}/input"
+                val sessionId = rootProject.file("/tmp/token.txt").readText()
+                val response = OkHttpClient()
+                    .newCall(Request.Builder().url(inputUrl).addHeader("Cookie", "session=$sessionId").build())
+                    .execute()
+                if (response.code == 200) {
+                    val inputData = response.body!!.string()
+                    println("Input  data file  retrieved")
+                    daySrcDir.resolve("day${day}.in").toFile().writeText(inputData.trim())
+                } else {
+                    println("Input data file not available: reponse=${response.code}")
                 }
             }
         }

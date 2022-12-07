@@ -1,6 +1,6 @@
 package mri.advent.yYYYY.dayDD
 
-import mri.advent.y2022.BaseDay
+import mri.advent.yYYYY.BaseDay
 
 /** --- Day DD:  --- */
 class DayDD(inFile: String = "/dayDD.in"): BaseDay(inFile)  {

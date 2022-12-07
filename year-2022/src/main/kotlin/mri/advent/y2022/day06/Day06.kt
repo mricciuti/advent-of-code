@@ -6,11 +6,9 @@ import mri.advent.y2022.BaseDay
 class Day06(inFile: String = "/day06.in") : BaseDay(inFile) {
 
     fun solve(buffSize: Int): Any {
-        for (idx in 0 until data.length - buffSize)
-            if (data.substring(idx, idx + buffSize).toList().distinct().size == buffSize) {
-                return idx + buffSize
-        }
-        return -1
+        return buffSize + data.windowed(buffSize).withIndex()
+            .first { it.value.toCharArray().distinct().size == buffSize }
+            .index
     }
 
     override fun part1() = solve(4)
