@@ -1,6 +1,8 @@
 package mri.advent.y2022
 
-abstract class BaseDay(inFile: String) {
+import kotlin.system.measureTimeMillis
+
+abstract class BaseDay(inFile: String, val debug: Boolean = false) {
 
     protected val data = resourceAsString(inFile)
 
@@ -8,11 +10,19 @@ abstract class BaseDay(inFile: String) {
     abstract fun part2(): Any
 
     fun execute() {
-        println("Part 1: " + part1())
-        println("Part 2: " + part2())
+        with(measureTimeMillis { println("Part 1: " + part1()) }) {
+            println("  => time taken: $this ms")
+        }
+        with(measureTimeMillis { println("Part 2: " + part2()) }) {
+            println("  => time taken: $this ms")
+        }
     }
 
-    fun resourceAsString(resource: String): String {
+    fun debug(msg: Any) {
+        if (debug) println(msg)
+    }
+
+    private fun resourceAsString(resource: String): String {
         getClassResource(resource)
             ?.let { return it.readText() }
             ?: throw IllegalArgumentException("Resource not found: $resource")
