@@ -1,0 +1,15 @@
+.gradle
+**/build/
+
+.idea/
+
+year*/
+!year-2024
+
+utils/
+
+private/
+.git.old/
+
+**/day*.txt
+**/input/
