@@ -5,7 +5,7 @@ import mri.advent.y2024.utils.toIntPair
 import kotlin.math.abs
 
 /** --- Day 01:  https://adventofcode.com/2024/day/01  --- */
-class Day01(_data: String? = null) : BaseDay(_data) {
+class Day01(dataOrNull: String? = null) : BaseDay(dataOrNull) {
 
     private fun leftAndRightLists(): Pair<List<Int>, List<Int>> = with(data.lines().map { it.toIntPair() }) {
         return this.map { it.first } to this.map { it.second }
@@ -20,7 +20,7 @@ class Day01(_data: String? = null) : BaseDay(_data) {
 
     override fun partTwo(): Any {
         val numberColumns = leftAndRightLists()
-        return numberColumns.first.map { left -> left * numberColumns.second.count { it == left } }.sum()
+        return numberColumns.first.sumOf { left -> left * numberColumns.second.count { it == left } }
     }
 }
 

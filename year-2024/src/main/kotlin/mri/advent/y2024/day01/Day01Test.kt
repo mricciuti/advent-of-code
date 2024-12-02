@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 class Day01Test {
 
-    val sample = """
+    private val sample = """
 3   4
 4   3
 2   5
@@ -15,12 +15,12 @@ class Day01Test {
     """.trimIndent()
 
     @Test
-    fun `test part one`() {
+    fun testPartOne() {
         assertEquals(11, Day01(sample).partOne())
     }
 
     @Test
-    fun `test part two`() {
+    fun testPartTwo() {
         assertEquals(31, Day01(sample).partTwo())
     }
 

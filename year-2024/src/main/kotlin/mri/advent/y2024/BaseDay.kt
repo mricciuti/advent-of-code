@@ -3,8 +3,8 @@ package mri.advent.y2024
 import kotlin.reflect.KClass
 import kotlin.system.measureTimeMillis
 
-abstract class BaseDay(_data: String?) {
-    protected val data = _data ?: dayInputData(this::class)
+abstract class BaseDay(dataOrNull: String?) {
+    protected val data = dataOrNull ?: dayInputData(this::class)
 
     abstract fun partOne(): Any
     abstract fun partTwo(): Any
@@ -19,5 +19,7 @@ abstract class BaseDay(_data: String?) {
     }
 }
 
-private fun <T : BaseDay> dayInputData(dayClazz: KClass<T>) = BaseDay::class.java.getResource("/input/${dayClazz.simpleName!!.lowercase()}.txt")?.readText()
-    ?: throw IllegalArgumentException("Resource not found for day : $dayClazz")
+private fun <T : BaseDay> dayInputData(dayClazz: KClass<T>) =
+    BaseDay::class.java.getResource("/input/${dayClazz.simpleName!!.lowercase()}.txt")
+        ?.readText()
+        ?: throw IllegalArgumentException("Resource not found for day : $dayClazz")
