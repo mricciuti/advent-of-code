@@ -2,6 +2,7 @@
 **/build/
 
 .idea/
+out/
 
 year*/
 !year-2024
