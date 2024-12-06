@@ -21,5 +21,15 @@ enum class Direction(val delta: Vec2D) {
     NE(Vec2D(1, -1)),
     SE(Vec2D(1, 1)),
     SW(Vec2D(-1, 1)),
-    NW(Vec2D(-1, -1))
+    NW(Vec2D(-1, -1));
+
+    companion object {
+        val CARDINALS = listOf(N, E, S, W)
+
+        fun nextCardinal(current: Direction) =
+            if (current == CARDINALS.last()) CARDINALS.first()
+            else CARDINALS.elementAt(CARDINALS.indexOf(current) + 1)
+    }
+
 }
+
