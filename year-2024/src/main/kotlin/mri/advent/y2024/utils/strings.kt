@@ -4,7 +4,8 @@ fun String.toIntPair(): Pair<Int, Int> = with(this.split(Regex("\\s+"))) {
     return this[0].toInt() to this[1].toInt()
 }
 
-fun String.toInts(delimiter: String = " "): List<Int> = this.trim().split(delimiter).map(String::toInt)
+fun String.toInts(delimiter: String = " ") = this.trim().split(delimiter).map(String::toInt)
+fun String.toLongs(delimiter: String = " ") = this.trim().split(delimiter).map(String::toLong)
 
 fun String.asChunks(): List<List<String>> {
     val lineSep = if (this.contains("\r\n")) "\r\n" else "\n"
