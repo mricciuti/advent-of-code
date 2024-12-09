@@ -25,4 +25,6 @@ open class CharGrid(cells: Array<Array<Char>>) : Grid<Char>(cells) {
         }
         return String(line.points.map { charAt(it) }.toCharArray())
     }
+
+    override fun toString() = this.cells.joinToString("\n") { it.joinToString("") }
 }

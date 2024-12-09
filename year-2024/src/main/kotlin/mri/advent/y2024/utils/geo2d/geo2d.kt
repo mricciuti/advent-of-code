@@ -7,6 +7,10 @@ package mri.advent.y2024.utils.geo2d
 data class Vec2D(val x: Int, val y: Int) {
     fun move(direction: Direction, steps: Int = 1) = Vec2D(x + direction.delta.x * steps, y + direction.delta.y * steps)
 
+    fun opposite() = Vec2D(-x, -y)
+    fun plus(other: Vec2D) = Vec2D(x + other.x, y + other.y)
+    fun minus(other: Vec2D) = Vec2D(x - other.x, y - other.y)
+
     // create a Line starting from this position with given direction and length
     fun lineFrom(direction: Direction, length: Int) = Line(Array(length) { this.move(direction, it) }.toList())
 }
