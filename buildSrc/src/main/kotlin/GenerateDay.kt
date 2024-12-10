@@ -36,11 +36,11 @@ open class GenerateDay : DefaultTask() {
         }
         // main input data file
         inputDir.resolve("day${day}.txt").toFile().whenNotExist { inputFile ->
-            val cookieFile = project.rootProject.file("/private/session-cookie.txt")
+            val cookieFile = project.rootProject.file("./private/session-cookie.txt")
             if (cookieFile.exists()) {
                 println("Input data file not found, try downloading it..")
                 val url = "https://adventofcode.com/$year/day/${day.toInt()}/input"
-                getInputData(url, project.rootProject.file("/private/session-cookie.txt").readText())?.let {
+                getInputData(url, project.rootProject.file("./private/session-cookie.txt").readText())?.let {
                     val lines = it.lines()
                     inputFile.writeText(lines.dropLast(if (lines.last().isBlank()) 1 else 0).joinToString("\n"))
                     println("Input data file downloaded OK")

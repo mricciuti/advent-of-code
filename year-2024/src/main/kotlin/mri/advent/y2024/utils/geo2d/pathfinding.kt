@@ -16,7 +16,8 @@ data class Path(private val steps: List<Vec2D>) {
  */
 fun <T> Grid<T>.findAllPaths(startPosition: Vec2D,
                              pathCompletedPredicate: (path: Path) -> Boolean,
-                             validMovePredicate: (from: Vec2D, to: Vec2D) -> Boolean, directions: List<Direction> = Direction.CARDINALS): List<Path> {
+                             validMovePredicate: (from: Vec2D, to: Vec2D) -> Boolean,
+                             directions: List<Direction> = Direction.CARDINALS): List<Path> {
 
     val resultPaths = mutableListOf<Path>()
 
