@@ -15,3 +15,6 @@ fun String.asChunks(): List<List<String>> {
             it.split(lineSep)
         }
 }
+
+fun String.splitAt(index: Int) = listOf(this.take(index), this.takeLast(length - index))
+fun String.splitHalf() = this.splitAt(this.length / 2)
