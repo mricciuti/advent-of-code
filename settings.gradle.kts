@@ -1,3 +1,6 @@
 rootProject.name = "advent-of-code"
 
-include("year-2024")
+rootProject.projectDir
+    .listFiles { file -> file.isDirectory && file.name.startsWith("year-") }
+    ?.forEach { include(it.name) }
+
