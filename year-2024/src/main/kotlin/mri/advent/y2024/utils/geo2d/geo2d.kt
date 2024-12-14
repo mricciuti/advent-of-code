@@ -8,6 +8,7 @@ data class Vec2D(val x: Int, val y: Int) {
     fun move(direction: Direction, steps: Int = 1) = Vec2D(x + direction.delta.x * steps, y + direction.delta.y * steps)
 
     fun opposite() = Vec2D(-x, -y)
+    fun mult(steps: Int) = Vec2D(x * steps, y * steps)
     fun plus(other: Vec2D) = Vec2D(x + other.x, y + other.y)
     fun minus(other: Vec2D) = Vec2D(x - other.x, y - other.y)
 
