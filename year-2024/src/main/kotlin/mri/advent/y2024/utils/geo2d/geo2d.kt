@@ -14,6 +14,8 @@ data class Vec2D(val x: Int, val y: Int) {
 
     // create a Line starting from this position with given direction and length
     fun lineFrom(direction: Direction, length: Int) = Line(Array(length) { this.move(direction, it) }.toList())
+
+    override fun toString() = "$x,$y"
 }
 
 data class Line(val points: List<Vec2D>)
@@ -31,9 +33,14 @@ enum class Direction(val delta: Vec2D) {
     companion object {
         val CARDINALS = listOf(N, E, S, W)
 
-        fun nextCardinal(current: Direction) =
-            if (current == CARDINALS.last()) CARDINALS.first()
-            else CARDINALS.elementAt(CARDINALS.indexOf(current) + 1)
+        fun nextCardinal(current: Direction, clockwise: Boolean = true) =
+            if (clockwise) {
+                if (current == CARDINALS.last()) CARDINALS.first()
+                else CARDINALS.elementAt(CARDINALS.indexOf(current) + 1)
+            } else {
+                if (current == CARDINALS.first()) CARDINALS.last()
+                else CARDINALS.elementAt(CARDINALS.indexOf(current) - 1)
+            }
     }
 
 }
