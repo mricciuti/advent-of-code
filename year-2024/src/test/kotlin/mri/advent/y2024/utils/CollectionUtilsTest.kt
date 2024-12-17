@@ -1,4 +1,4 @@
-package utils
+package mri.advent.y2024.utils
 
 import mri.advent.y2024.utils.consecutiveRanges
 import mri.advent.y2024.utils.pairs
